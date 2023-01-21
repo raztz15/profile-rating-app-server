@@ -16,7 +16,6 @@ router.get("/profiles/new", (req, res) => {
 
 // create new profile
 router.post("/", async (req, res) => {
-  console.log("body ===> ", req.body);
   const profile = new Profile({
     name: req.body.name,
     lastName: req.body.lastName,
