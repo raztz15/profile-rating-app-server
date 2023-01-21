@@ -7,10 +7,18 @@ const express = require("express");
 
 const app = express();
 
+const bodyParser = require("body-parser");
+
 // connnectiong to the route index
 const indexRouter = require("./routes/index");
+const profilesRouter = require("./routes/profiles");
 
 app.use("/", indexRouter);
+app.use("/profiles", profilesRouter);
+// urlEncoded ---> because we're sending the values by url to our server
+// limit ---> increasing the limit size of the server can accept
+app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
+app.use(bodyParser.json());
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
