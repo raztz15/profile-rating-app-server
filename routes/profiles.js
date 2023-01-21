@@ -16,6 +16,7 @@ router.get("/profiles/new", (req, res) => {
 
 // create new profile
 router.post("/", async (req, res) => {
+  console.log("got inside ===> ", req.body.name);
   const profile = new Profile({
     name: req.body.name,
     lastName: req.body.lastName,
@@ -24,6 +25,7 @@ router.post("/", async (req, res) => {
   });
   try {
     const newProfile = await profile.save();
+    res.status(200);
     res.redirect("profiles");
   } catch (error) {
     req.send({ profile: profile, errorMessage: "Failed to create Profile" });

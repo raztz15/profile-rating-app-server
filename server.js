@@ -7,7 +7,16 @@ const express = require("express");
 
 const app = express();
 
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
+
+// this works and body-parser doesn't ===> need to check this!!!!
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    limit: "10mb",
+    extended: true,
+  })
+);
 
 // connnectiong to the route index
 const indexRouter = require("./routes/index");
@@ -17,8 +26,8 @@ app.use("/", indexRouter);
 app.use("/profiles", profilesRouter);
 // urlEncoded ---> because we're sending the values by url to our server
 // limit ---> increasing the limit size of the server can accept
-app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
-app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
+// app.use(bodyParser.json());
 
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
