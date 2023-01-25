@@ -19,11 +19,11 @@ app.use(
 );
 
 // connnectiong to the route index
-const indexRouter = require("./routes/index");
+// const indexRouter = require("./routes/index");
 const profilesRouter = require("./routes/profiles");
 
-app.use("/", indexRouter);
-app.use("/profiles", profilesRouter);
+// app.use("/", indexRouter);
+app.use("/", profilesRouter);
 // urlEncoded ---> because we're sending the values by url to our server
 // limit ---> increasing the limit size of the server can accept
 // app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));

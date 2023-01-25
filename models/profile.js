@@ -2,7 +2,10 @@ const { mongo } = require("mongoose");
 
 const mongoose = require("mongoose");
 
-const profileSchema = new mongoose.Schema({
+var Schema = mongoose.Schema,
+  ObjectId = Schema.ObjectId;
+
+const profileSchema = new Schema({
   name: {
     type: String,
     required: true,
