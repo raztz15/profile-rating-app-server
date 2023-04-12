@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const express = require("express");
+const cors = require('cors')
 
 const app = express();
 
@@ -11,6 +12,7 @@ const app = express();
 
 // this works and body-parser doesn't ===> need to check this!!!!
 app.use(express.json());
+app.use(cors())
 app.use(
   express.urlencoded({
     limit: "10mb",
