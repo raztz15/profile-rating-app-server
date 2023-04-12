@@ -25,7 +25,8 @@ const userRouter = require("./routes/UserRoute");
 
 // app.use("/", indexRouter);
 app.use("/all-profiles", profilesRouter);
-app.use("/register", userRouter);
+app.use("/", userRouter);
+// app.use('/', userRouter)
 // urlEncoded ---> because we're sending the values by url to our server
 // limit ---> increasing the limit size of the server can accept
 // app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
