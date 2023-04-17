@@ -22,7 +22,7 @@ app.use(
 
 // connnectiong to the route index
 // const indexRouter = require("./routes/index");
-const profilesRouter = require("./routes/profiles");
+const profilesRouter = require("./routes/profilesRoute");
 const userRouter = require("./routes/UserRoute");
 
 // app.use("/", indexRouter);
