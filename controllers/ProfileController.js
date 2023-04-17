@@ -15,8 +15,10 @@ profileController.createNewProfile = async (req, res) => {
     const { name, lastName, age, technology } = req.body
     const profile = new Profile({ name, lastName, age, technology });
     try {
-        const newProfile = await profile.save();
-        res.status(200).send({ data: newProfile, message: `${newProfile.name} added successfuly` });
+        if (profile) {
+            const newProfile = await profile.save();
+            res.status(200).send({ data: newProfile, message: `${newProfile.name} added successfuly` });
+        }
     } catch (error) {
         res.status(400).send({ profile: profile, errorMessage: "Failed to create Profile" });
     }
