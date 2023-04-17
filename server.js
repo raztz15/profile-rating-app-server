@@ -8,8 +8,6 @@ const cors = require('cors')
 
 const app = express();
 
-// const bodyParser = require("body-parser");
-
 // this works and body-parser doesn't ===> need to check this!!!!
 app.use(express.json());
 app.use(cors())
@@ -21,19 +19,14 @@ app.use(
 );
 
 // connnectiong to the route index
-// const indexRouter = require("./routes/index");
 const profilesRouter = require("./routes/profilesRoute");
 const userRouter = require("./routes/UserRoute");
 
-// app.use("/", indexRouter);
 app.use("/all-profiles", profilesRouter);
 app.use("/", userRouter);
-// app.use('/', userRouter)
+
 // urlEncoded ---> because we're sending the values by url to our server
 // limit ---> increasing the limit size of the server can accept
-// app.use(bodyParser.urlencoded({ limit: "10mb", extended: false }));
-// app.use(bodyParser.json());
-
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 const db = mongoose.connection;
