@@ -33,7 +33,8 @@ userController.findUserByEmailAndPassword = async (req, res) => {
     const { username, email, password } = req.body
     try {
         // TODO add feature that enable the user to send either username or email
-        if (username && email && password) {
+        if (email && password) {
+            console.log(username, email, password);
             const user = await User.findOne({ email })
             if (!user) return res.status(400).send({ error: "Invalid Email or Password" })
             if (user) {
